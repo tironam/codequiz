@@ -1,0 +1,13 @@
+.timer {
+    align: right;
+}
+
+.container-fluid {
+    width: 60%;
+    height: 50%;
+    background-color: azure;
+}
+
+body {
+    background-color: lightslategray;
+}
