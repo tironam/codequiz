@@ -5,9 +5,24 @@
 .container-fluid {
     width: 60%;
     height: 50%;
-    background-color: azure;
+    background-color: rgba(72, 69, 221, 0.4);
+    margin: auto;
+    margin-top: 150px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
 }
 
 body {
-    background-color: lightslategray;
+    background-color: rgba(176, 224, 247);
+}
+
+#start {
+    margin-bottom: 20px;
+}
+
+.startText {
+    margin-top: 20px;
 }
