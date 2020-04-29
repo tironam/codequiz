@@ -22,8 +22,15 @@
         </div>
     </div>
 
-<div class="container-fluid">
-    <div id="questions" class="invisible">
+<div id="startBox" class="container-fluid">
+    <div class="start text-center">
+        <h3 id="startTxt" class="startTxt text-center">You have 90 seconds to complete this quiz! For every wrong answer, you lose 5 seconds. Good luck!</h3>
+        <button id="startBtn" class="startBtn  btn-success btn-lg">Start</button>
+    </div>
+</div>
+
+<div id="questContainer" class="container-fluid invisible text-center">
+    <div id="questions">
         <div id="qBox1"></div>
             <div id="answerBtn1" class="answerBtn">
                     <p id="qText">What show does the term "hotdog" come from?</p>
@@ -33,9 +40,6 @@
                     <button id="q4Btn" class="btn btn-light">Freaks & Geeks</button>
         </div>
         <button id="nextBtn" class = "btn-info">Next</button>
-    </div>
-    <div class="start">
-        <button id="startBtn"class="startBtn  btn-success">Start</button>
     </div>
 </div>
 

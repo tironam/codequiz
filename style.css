@@ -26,8 +26,11 @@ body {
     margin-bottom: 20px;
 }
 
-.startText {
+.startTxt {
     margin-top: 20px;
+    font-size: 30px;
+    color: white;
+    padding: 20px;
 }
 
 #question {
@@ -45,6 +48,7 @@ body {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .btn-info {
@@ -57,6 +61,17 @@ body {
     margin-bottom: 10px;
 }
 
-.answerBtn {
-    
+.startTxt {
+    margin-top: 10px;
+}
+
+.byeBox {
+    display: none;
+}
+
+.answerBtn p {
+    margin-top: 10px;
+    padding: 15px;
+    color: white;
+    font-size: 20px;
 }
