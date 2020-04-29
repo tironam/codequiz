@@ -1,3 +1,5 @@
+
+
 .timer {
     align: right;
 }
@@ -13,6 +15,7 @@
     -moz-border-radius: 25px;
     -ms-border-radius: 25px;
     -o-border-radius: 25px;
+    box-shadow: 0 0 10px 2px;
 }
 
 body {
@@ -29,4 +32,21 @@ body {
 
 #question {
     text-align: center;
+}
+
+.btn {
+    margin: 5px 10px 5px 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+.startBtn {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.answerBtn {
+    
 }
