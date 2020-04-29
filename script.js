@@ -1,5 +1,5 @@
 const startButton = document.getElementById('startBtn')
-const qBox = document.getElementById('answerBtn')
+const qBox = document.getElementById('questions')
 let shuffledQ, questionIndex
 const qElement = document.getElementById('questionBox')
 const answerButton = document.getElementById('answerBtn')
@@ -11,16 +11,28 @@ function startGame() {
     shuffledQ = questions.sort(() => Math.random() - .5)
     questionIndex = 0
     qBox.classList.remove('invisible')
-    nextQ()
+    showQ()
 }
 
 function nextQ () {
-    // showQ(questionIndex)
+    showQ(shuffledQ[questionIndex])
 } 
 
-// function showQ(questions) {
-//     qElement.innerText = questions.question
-// }
+function showQ(questions) {
+    // qElement.innerText = questions.question
+    document.getElementById('questionBox').append.innerText = questions.question
+    document.getElementById('btn').append.innerText = questions.answers
+    // questions.answers.forEach(answer => {
+    //     const button = document.createElement('button')
+    //     button.innerText = answer.text
+    //     button.classList.add('btn')
+    //     if (answer.correct) {
+    //         button.dataset.correct = answer.correct
+    //     }
+    //     button.addEventListener('click', selectAnswer)
+    //     answerButton.appendChild(button)
+    // })
+}
 
 function choose() {
 
@@ -28,7 +40,7 @@ function choose() {
 
 const questions = [
     {
-        question: 'Question 1',
+        question: `What show does the term "hotdog" come from?`,
         answers: [
             {
                 text: 'no', 
@@ -37,6 +49,14 @@ const questions = [
             {
              text: 'yes', 
              correct: true
+            },
+            {
+                text: 'narp',
+                correct: false
+            },
+            {
+                text: 'nah',
+                correct: false
             }
         ]
     }
