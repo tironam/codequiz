@@ -26,3 +26,7 @@ body {
 .startText {
     margin-top: 20px;
 }
+
+#question {
+    text-align: center;
+}
