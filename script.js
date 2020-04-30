@@ -1,43 +1,160 @@
-const startButton = document.getElementById('startBtn')
-const qBox = document.getElementById('questContainer')
-const qElement = document.getElementById('questionBox')
-const answerButton = document.getElementById('answerBtn')
-const startTxt = document.getElementById('startTxt')
-const startBox = document.getElementById('startBox')
-let rightAnswer = document.getElementById('rightAnswer')
-let questBtn = document.getElementById('qBtn')
+const questions = [
+    {
+        question: 'What show does the term \"hotdog\" come from?',
+        answers: [
+            { text: 'Silicon Valley', correct: true },
+            { text: 'The Big Bang Theory', correct: false },
+            { text: 'Mr. Robot', correct: false },
+            { text: 'Halt & Catch Fire', correct: false }
+        ]
+    },
+    {
+        question: 'Temperate Literals use:',
+        answers: [
+            { text: 'Backticks', correct: true },
+            { text: 'Single Quotes', correct: false },
+            { text: 'Double Quotes', correct: false },
+            { text: '<a> links', correct: false }
+        ]
+    },
+    {
+        question: 'A Boolean is a True/False statement?',
+        answers: [
+            { text: 'True', correct: true },
+            { text: 'False', correct: false }
+        ]
+    },
+    {
+        question: 'What styling library can be a coder\s best friend?',
+        answers: [
+            { text: 'Pied Piper', correct: false },
+            { text: 'Bootstrap', correct: true },
+            { text: 'Box Lunch', correct: false },
+            { text: 'JQuery', correct: false }
+        ]
+    },
+    {
+        question: 'What styling library can be a coder\s best friend?',
+        answers: [
+            { text: 'Pied Piper', correct: false },
+            { text: 'Bootstrap', correct: true },
+            { text: 'Box Lunch', correct: false },
+            { text: 'JQuery', correct: false }
+        ]
+    },
+    {
+        question: 'W3 Schools is a:',
+        answers: [
+            { text: 'Great coding resource', correct: true },
+            { text: 'A styling library', correct: false },
+            { text: 'Art school', correct: false },
+            { text: 'Middle-out compression company', correct: false }
+        ]
+    },
+    {
+        question: 'It\'s best practice to use ____ for CSS',
+        answers: [
+            { text: 'IDs', correct: false },
+            { text: 'Classes', correct: true },
+            { text: 'Scripts', correct: false },
+            { text: '<a> links', correct: false }
+        ]
+    },
+    {
+        question: 'It\'s best practice to use ____ for JavaScript',
+        answers: [
+            { text: 'IDs', correct: true },
+            { text: 'Classes', correct: false },
+            { text: 'Cat pictures', correct: false },
+            { text: '<a> links', correct: false }
+        ]
+    },
+    {
+        question: 'The best browser for a web developer to use is:',
+        answers: [
+            { text: 'Google Chrome', correct: true },
+            { text: 'Internet Explorer', correct: false },
+            { text: 'Safari', correct: false },
+            { text: 'The Opera browser on a Nintendo Wii', correct: false }
+        ]
+    }
+]
+
+const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
+// const startText = document.getElementById('start-txt')
+const questionContainerElement = document.getElementById('question-container')
+const questionElement = document.getElementById('question')
+const answerButtonsElement = document.getElementById('answer-buttons')
+
+let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
-// questBtn.addEventListener('click', () => {
-//     if ()
-// })\
-
-questBtn.addEventListener('click', function() {
-    console.log('hey')
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
 })
 
 function startGame() {
     startButton.classList.add('invisible')
-    startTxt.classList.add('invisible')
-    startBox.classList.add('byeBox')
-    qBox.classList.remove('invisible')
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    questionContainerElement.classList.remove('invisible')
+    setNextQuestion()
 }
 
-function buttonClick() {
-    document.getElementById('qBtn').click()
+function setNextQuestion() {
+    resetState()
+    showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-function chooseAnswer() {
-    document.getElementById('qBtn').addEventListener('click', (event) => {
-        event.preventDefault()
-        if (document.getElementById('qBtn').classList.contains('rightAnswer')) {
-            console.log('Right answer!')
-        } else {
-            console.log('you got it wrong!')
+function showQuestion(question) {
+    questionElement.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
         }
+        button.addEventListener('click', selectAnswer)
+        answerButtonsElement.appendChild(button)
     })
 }
 
-chooseAnswer()
+function resetState() {
+    clearStatusClass(document.body)
+    nextButton.classList.add('invisible')
+    while (answerButtonsElement.firstChild) {
+        answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+    }
+}
 
+function selectAnswer(e) {
+    const selectedButton = e.target
+    const correct = selectedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonsElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if (shuffledQuestions.length > currentQuestionIndex + 1) {
+        nextButton.classList.remove('invisible')
+    } else {
+        startButton.innerText = 'Restart'
+        startButton.classList.remove('invisible')
+    }
+}
 
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
