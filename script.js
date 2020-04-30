@@ -121,6 +121,7 @@ function startGame() {
     questionContainerElement.classList.remove('invisible')
     setNextQuestion()
     getTime()
+    document.getElementById('time').classList.remove('invisible')
 }
 
 function setNextQuestion() {
