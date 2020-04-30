@@ -89,7 +89,7 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 const timer = document.getElementById('time')
 let count = 60
 let right = 0
-let wrong = 0
+let notRight = 0
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -173,7 +173,7 @@ function selectAnswer(e) {
     Array.from(answerButtonsElement.children).forEach(button => {
         // Checks the button's dataset for correct
         setStatusClass(button, button.dataset.correct)
-    })
+    }) 
     // Checks to see if there are any questions left
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         // If there are more questions, display next button
@@ -183,6 +183,14 @@ function selectAnswer(e) {
         startButton.innerText = 'Restart'
         startButton.classList.remove('invisible')
     }
+}
+
+function rightWrong() {
+    document.getElementById('rightWrong)'.innerHTML = `
+    <p>
+        You have ${right} right and ${notRight} wrong
+    </p>
+    `)
 }
 
 // Checks an element for if it's correct
