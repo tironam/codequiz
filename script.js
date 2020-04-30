@@ -86,8 +86,25 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+const timer = document.getElementById('time')
+let count = 60
 
 let shuffledQuestions, currentQuestionIndex
+
+const getTime = () => {
+    let tempMinutes = Math.floor(count / 60)
+    let seconds = count % 60
+    seconds = `${seconds}`
+    if (seconds.length < 2) {
+        seconds = `0${seconds}`
+    }
+    document.getElementById('time').textContent = (seconds)
+}
+
+setInterval(() => {
+    count--
+    getTime()
+}, 1000)
 
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
@@ -101,6 +118,7 @@ function startGame() {
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('invisible')
     setNextQuestion()
+    getTime()
 }
 
 function setNextQuestion() {
@@ -158,3 +176,15 @@ function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
+
+// function countdown() {
+//     timer = setInterval(countdown, 1000)
+//     let minutes = Math.floor(time / 60)
+//     let seconds = time % 60
+//     time--
+//     clock.textContent = ('Time left: ' + `${minutes} minutes, ${seconds} seconds`)
+//     if (time <= 0) {
+//         document.getElementById('clock').innerHTML = 'Time up!'
+//         endQuiz
+//     }
+// }
