@@ -147,9 +147,9 @@ function showQuestion(question) {
 }
 
 function resetState() {
-    clearStatusClass(document.body)
     // Hides the next button
     nextButton.classList.add('invisible')
+    count = 60
     // Loops through the children for the answer button elements and removes them
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
