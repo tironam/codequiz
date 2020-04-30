@@ -129,43 +129,59 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
+    // Sets the inner text of the #question element to that of question string from the questions array
     questionElement.innerText = question.question
+    // creates a button for each answer it's pulling from the array and giving it style and attributes
     question.answers.forEach(answer => {
         const button = document.createElement('button')
         button.innerText = answer.text
         button.classList.add('btn', 'btn-light')
         if (answer.correct) {
+            // Adds data attribute of correct, and sets it to correct
             button.dataset.correct = answer.correct
         }
         button.addEventListener('click', selectAnswer)
+        // adds this to the answerButtonsElement
         answerButtonsElement.appendChild(button)
     })
 }
 
 function resetState() {
     clearStatusClass(document.body)
+    // Hides the next button
     nextButton.classList.add('invisible')
+    // Loops through the children for the answer button elements and removes them
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
 }
 
 function selectAnswer(e) {
+    // what was clicked on
     const selectedButton = e.target
+    // Checking if the selected button's dataset is correct
     const correct = selectedButton.dataset.correct
+    // Checking if the body is set to correct or not
     setStatusClass(document.body, correct)
+    // Creates an array from answer button elements
     Array.from(answerButtonsElement.children).forEach(button => {
+        // Checks the button's dataset for correct
         setStatusClass(button, button.dataset.correct)
     })
+    // Checks to see if there are any questions left
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
+        // If there are more questions, display next button
         nextButton.classList.remove('invisible')
     } else {
+        // If there are no more questions, brings the start button back and changes it to restart, but starts it again
         startButton.innerText = 'Restart'
         startButton.classList.remove('invisible')
     }
 }
 
+// Checks an element for if it's correct
 function setStatusClass(element, correct) {
+    // Clears whatever status it already has
     clearStatusClass(element)
     if (correct) {
         element.classList.add('correct')
@@ -174,6 +190,7 @@ function setStatusClass(element, correct) {
     }
 }
 
+// 
 function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
