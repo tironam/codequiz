@@ -87,6 +87,7 @@ const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const timer = document.getElementById('time')
+const startText = document.getElementById('start-message')
 let count = 60
 let right = 0
 let notRight = 0
@@ -120,6 +121,7 @@ nextButton.addEventListener('click', () => {
 
 function startGame() {
     startButton.classList.add('invisible')
+    startText.classList.add('invisible')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('invisible')
