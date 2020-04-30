@@ -32,6 +32,51 @@ const questions = [
             { text: 'Box Lunch', correct: false },
             { text: 'JQuery', correct: false }
         ]
+    },
+    {
+        question: 'What styling library can be a coder\s best friend?',
+        answers: [
+            { text: 'Pied Piper', correct: false },
+            { text: 'Bootstrap', correct: true },
+            { text: 'Box Lunch', correct: false },
+            { text: 'JQuery', correct: false }
+        ]
+    },
+    {
+        question: 'W3 Schools is a:',
+        answers: [
+            { text: 'Great coding resource', correct: true },
+            { text: 'A styling library', correct: false },
+            { text: 'Art school', correct: false },
+            { text: 'Middle-out compression company', correct: false }
+        ]
+    },
+    {
+        question: 'It\'s best practice to use ____ for CSS',
+        answers: [
+            { text: 'IDs', correct: false },
+            { text: 'Classes', correct: true },
+            { text: 'Scripts', correct: false },
+            { text: '<a> links', correct: false }
+        ]
+    },
+    {
+        question: 'It\'s best practice to use ____ for JavaScript',
+        answers: [
+            { text: 'IDs', correct: true },
+            { text: 'Classes', correct: false },
+            { text: 'Cat pictures', correct: false },
+            { text: '<a> links', correct: false }
+        ]
+    },
+    {
+        question: 'The best browser for a web developer to use is:',
+        answers: [
+            { text: 'Google Chrome', correct: true },
+            { text: 'Internet Explorer', correct: false },
+            { text: 'Safari', correct: false },
+            { text: 'The Opera browser on a Nintendo Wii', correct: false }
+        ]
     }
 ]
 
