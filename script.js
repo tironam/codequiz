@@ -37,18 +37,18 @@ const questions = [
         question: 'What styling library can be a coder\s best friend?',
         answers: [
             { text: 'Pied Piper', correct: false },
-            { text: 'Bootstrap', correct: true },
             { text: 'Box Lunch', correct: false },
+            { text: 'Bootstrap', correct: true },
             { text: 'JQuery', correct: false }
         ]
     },
     {
         question: 'W3 Schools is a:',
         answers: [
-            { text: 'Great coding resource', correct: true },
             { text: 'A styling library', correct: false },
             { text: 'Art school', correct: false },
-            { text: 'Middle-out compression company', correct: false }
+            { text: 'Middle-out compression company', correct: false },
+            { text: 'Great coding resource', correct: true }
         ]
     },
     {
@@ -63,18 +63,18 @@ const questions = [
     {
         question: 'It\'s best practice to use ____ for JavaScript',
         answers: [
-            { text: 'IDs', correct: true },
             { text: 'Classes', correct: false },
             { text: 'Cat pictures', correct: false },
-            { text: '<a> links', correct: false }
+            { text: '<a> links', correct: false },
+            { text: 'IDs', correct: true },
         ]
     },
     {
         question: 'The best browser for a web developer to use is:',
         answers: [
-            { text: 'Google Chrome', correct: true },
             { text: 'Internet Explorer', correct: false },
             { text: 'Safari', correct: false },
+            { text: 'Google Chrome', correct: true },
             { text: 'The Opera browser on a Nintendo Wii', correct: false }
         ]
     }
@@ -106,6 +106,10 @@ const getTime = () => {
 setInterval(() => {
     count--
     getTime()
+    // if (seconds <= 0) {
+    //     document.getElementById('time').classList.add('invisible')
+    //     alert(`Time's up!`)
+    // }
 }, 1000)
 
 startButton.addEventListener('click', startGame)
@@ -132,6 +136,7 @@ function setNextQuestion() {
 function showQuestion(question) {
     // Sets the inner text of the #question element to that of question string from the questions array
     questionElement.innerText = question.question
+    questionElement.classList.add('text-center', 'font-weight-bold')
     // creates a button for each answer it's pulling from the array and giving it style and attributes
     question.answers.forEach(answer => {
         const button = document.createElement('button')
