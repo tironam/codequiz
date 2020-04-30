@@ -88,6 +88,8 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const timer = document.getElementById('time')
 let count = 60
+let right = 0
+let wrong = 0
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -97,7 +99,7 @@ const getTime = () => {
     seconds = `${seconds}`
     if (seconds.length < 2) {
         seconds = `0${seconds}`
-    }
+    } else 
     document.getElementById('time').textContent = (seconds)
 }
 
